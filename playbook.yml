@@ -1,0 +1,33 @@
+---
+- hosts: all
+  name: setup
+  vars:
+    ansible_become: yes
+    ansible_become_method: sudo
+  tasks:
+    - name: update/upgrade
+      ansible.builtin.apt:
+        upgrade: dist
+        update_cache: yes
+    - name: install database
+      ansible.builtin.apt:
+        pkg:
+          - apache2
+          - mariadb-server
+          - mariadb-client
+          - php
+          - php-mysql
+          - php-xml
+          - php-xmlrpc
+          - php-gd
+          - php-intl
+          - php-mbstring
+          - php-curl
+          - php-tokenizer
+          - php-soap
+          - php-zip
+          - php-fpm
+          - libapache2-mod-php8.2
+          - composer
+          - git
+          - certbot
